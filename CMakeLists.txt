@@ -7,9 +7,6 @@ project(blockSQP
     LANGUAGES CXX
     )
 
-# Find dependencies: LAPACK
-find_package(LAPACK REQUIRED)
-
 # Find dependencies: qpOASES
 find_path(QPOASES_PREFIX
     include/qpOASES.hpp
@@ -48,7 +45,7 @@ set_property(TARGET blockSQP PROPERTY PUBLIC_HEADER
     include/blocksqp_stats.hpp
     )
 target_include_directories(blockSQP PUBLIC include ${QPOASES_PREFIX}/include)
-target_link_libraries(blockSQP LAPACK::LAPACK ${QPOASES_LIBRARY})
+target_link_libraries(blockSQP ${QPOASES_LIBRARY})
 install(TARGETS blockSQP
     LIBRARY
     PUBLIC_HEADER
